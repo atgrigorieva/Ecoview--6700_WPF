@@ -1,0 +1,304 @@
+﻿<Window x:Class="UVStudio.CurrSampleFrm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UVStudio"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+         xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+        xmlns:dvc="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
+        mc:Ignorable="d"
+        Title="CurrSampleFrm" MinHeight="450" MinWidth="720" WindowState="Maximized" WindowStartupLocation="CenterOwner" 
+        ShowInTaskbar="True" AllowsTransparency="False" WindowStyle="None" Loaded="Window_Loaded">
+    <Border BorderBrush="Black">
+        <Grid Margin="-2,0,2,0">
+            <Grid.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="0.85" ScaleY="0.85"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                    <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="brdr" TextBlock.Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                </Style>
+                <Style x:Key="TextInitialization">
+
+                    <Setter Property="TextBlock.FontSize" Value="16" />
+
+                </Style>
+                <Style x:Key="ButtonText" TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                    <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                    <Setter Property="Foreground" Value="#FF000000"></Setter>
+
+                    <Setter Property="TextBlock.FontSize" Value="16" />
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                            <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                            <Setter Property="Foreground" Value="#FF000000"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                            <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                            <Setter Property="Foreground" Value="#FF000000"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsDefaulted" Value="True">
+                            <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                            <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                            <Setter Property="Foreground" Value="#FF000000"></Setter>
+                        </Trigger>
+
+                    </Style.Triggers>
+
+                </Style>
+                <Style x:Key="HeaderText">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Center" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+
+                <Style x:Key="SeparatorLine">
+
+                    <Setter Property="TextBlock.Margin" Value="7"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+
+                </Style>
+                <Style x:Key="HeaderMode">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Left" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+                <Style x:Key="ModeText">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Right" />
+                    <Setter Property="TextBlock.FontSize" Value="16" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Right" />
+
+                </Style>
+                <Style x:Key="HeaderModeLambda">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Center" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+                <Style x:Key="SeparatorLineHorizontale" TargetType="{x:Type Separator}"
+                    BasedOn="{StaticResource {x:Type Separator}}">
+
+                    <Setter Property="LayoutTransform">
+                        <Setter.Value>
+                            <TransformGroup>
+                                <TransformGroup.Children>
+                                    <TransformCollection>
+                                        <RotateTransform Angle="0"/>
+                                    </TransformCollection>
+                                </TransformGroup.Children>
+                            </TransformGroup>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Background" Value="LightGray"/>
+
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Rectangle Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="34" Grid.RowSpan="4">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#C4D4D3DC" Offset="0"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="1"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="0.531"></GradientStop>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <Label Grid.Column="9" Grid.ColumnSpan="18" Grid.RowSpan="4"  Style="{StaticResource HeaderText}"
+                   Margin="0,10,10.706,12" Width="401">Спектральный анализ/Выбор образца</Label>
+            <Button Focusable="False" x:Name="CloseSettings" ClickMode="Press" PreviewMouseDown="CloseSettings_PreviewMouseDown" 
+                    
+                    Grid.Column="31" Grid.ColumnSpan="3" Margin="9,0,0,0" Grid.RowSpan="4"
+                    Background="{x:Null}" BorderBrush="{x:Null}">
+                <StackPanel>
+                    <Image Source="img/UI_DB_Return.png" Height="54" />
+                </StackPanel>
+            </Button>
+
+            <WindowsFormsHost  Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="22" Grid.RowSpan="27">
+                <wf:DataGridView x:Name="dataGridView1"/>
+            </WindowsFormsHost>
+
+
+
+            <Grid Grid.Column="23" Grid.Row="5" Grid.ColumnSpan="10" Grid.RowSpan="27" x:Name="RightSettings">
+                <Label Style="{StaticResource HeaderMode}" Width="201" Margin="63,0,0,339">Общая информация</Label>
+
+                <Label Style="{StaticResource ModeText}"  Width="105" Margin="0,32,271,311">Тип:</Label>
+                <Label Style="{StaticResource TextInitialization}" Content="" x:Name="lblXHV" Margin="290,32,10,310"/>
+
+                <Label Style="{StaticResource ModeText}" Width="180" x:Name="lblXLHV" Margin="0,61,195,278">Номер серии:</Label>
+                <Label Style="{StaticResource TextInitialization}" Content="" Margin="290,61,10,282"/>
+
+                <Label Style="{StaticResource ModeText}" Width="150" Margin="0,94,223,246">Оператор:</Label>
+                <Label Style="{StaticResource TextInitialization}" Content="" x:Name="lblCZZV" Margin="290,94,10,244"/>
+
+                <Label Style="{StaticResource ModeText}" Width="200" Margin="0,128,172,211" >Рабочий режим:</Label>
+                <Label Style="{StaticResource TextInitialization}" Margin="290,128,10,215" Content="" x:Name="lblCZMSV"/>
+
+                <Label Style="{StaticResource HeaderMode}" Margin="76,161,0,173">Фотометрическая</Label>
+
+                <Label Style="{StaticResource ModeText}" Width="125" Margin="0,198,245,143">Режим:</Label>
+                <Label Style="{StaticResource TextInitialization}" x:Name="lblCLMSV" Margin="290,198,10,142" Content=""></Label>
+
+                <Label Style="{StaticResource ModeText}" Width="220" Margin="0,220,151,123">Начальная WL(нм):</Label>
+                <Label Style="{StaticResource TextInitialization}" Margin="290,220,10,122" x:Name="lblQSBCV" Content=""></Label>
+
+                <Label Style="{StaticResource ModeText}" Width="210" Margin="0,244,160,99" >Конечная WL(нм):</Label>
+                <Label Style="{StaticResource TextInitialization}" x:Name="lblJSBCV" Margin="290,244,10,98" Content=""></Label>
+
+                <Label Style="{StaticResource ModeText}" Width="145" Margin="0,269,223,71">Интервал (сек):</Label>
+                <Label Style="{StaticResource TextInitialization}" x:Name="lblJGV" Margin="290,269,10,71" Content=""></Label>
+
+                <Label Style="{StaticResource ModeText}" Width="140" Margin="0,295,227,46">Скорость:</Label>
+                <Label Style="{StaticResource TextInitialization}" x:Name="lblSDV" Margin="290,295,10,47" Content=""></Label>
+
+                <Label Style="{StaticResource ModeText}" Width="300" Margin="0,316,68,22">Пропускная способность(нм):</Label>
+                <Label Style="{StaticResource TextInitialization}" x:Name="lblGPDKV" Margin="290,316,10,25" Content=""></Label>
+
+                <Label Style="{StaticResource ModeText}" Width="235" Margin="0,338,131,0">Оптический путь(нм):</Label>
+                <Label Style="{StaticResource TextInitialization}" x:Name="lblGCV" Margin="290,338,10,3" Content=""></Label>
+            </Grid>
+
+
+            <Rectangle Grid.Column="0" Grid.Row="33" Grid.ColumnSpan="34" Grid.RowSpan="4">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#C4D4D3DC" Offset="0"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="1"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="0.531"></GradientStop>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <Button Focusable="False"
+                     Style="{StaticResource ButtonText}" Grid.Column="1" Grid.Row="34" Grid.ColumnSpan="3" 
+                Grid.RowSpan="2" x:Name="btnDelete" ClickMode="Press"  PreviewMouseDown="BtnDelete_PreviewMouseDown">Удалить</Button>
+
+            <Button Focusable="False" 
+                     Style="{StaticResource ButtonText}" Grid.Column="24" Grid.Row="34" Grid.ColumnSpan="3"
+                Grid.RowSpan="2" x:Name="btnTop" ClickMode="Press"  PreviewMouseDown="Top_PreviewMouseDown">Вверх</Button>
+
+            <Button Focusable="False"
+                     Style="{StaticResource ButtonText}" Grid.Column="28" Grid.Row="34" Grid.ColumnSpan="5" Grid.RowSpan="2" 
+                x:Name="btnAllShow" ClickMode="Press"  PreviewMouseDown="AllCurrent_PreviewMouseDown">Все/Текущие</Button>
+
+
+        </Grid>
+    </Border>
+</Window>
