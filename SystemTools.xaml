@@ -1,0 +1,362 @@
+﻿<Window x:Class="UVStudio.SystemTools"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UVStudio"
+        mc:Ignorable="d"
+        Title="SystemTools" MinHeight="450" MinWidth="720" WindowState="Maximized" WindowStartupLocation="CenterOwner" ShowInTaskbar="True" AllowsTransparency="False" WindowStyle="None" Loaded="Window_Loaded">
+    <Border BorderBrush="Black">
+        <Grid>
+            <Grid.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="0.85" ScaleY="0.85"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                    <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="brdr" TextBlock.Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                </Style>
+                <Style x:Key="ButtonText" TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                    <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                    <Setter Property="Foreground" Value="#FF000000"></Setter>
+
+                    <Setter Property="TextBlock.FontSize" Value="16" />
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                            <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                            <Setter Property="Foreground" Value="#FF000000"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                            <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                            <Setter Property="Foreground" Value="#FF000000"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsDefaulted" Value="True">
+                            <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                            <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                            <Setter Property="Foreground" Value="#FF000000"></Setter>
+                        </Trigger>
+
+                    </Style.Triggers>
+
+                </Style>
+                <Style x:Key="SeparatorLineHorizontale" TargetType="{x:Type Separator}"
+                    BasedOn="{StaticResource {x:Type Separator}}">
+
+                    <Setter Property="LayoutTransform">
+                        <Setter.Value>
+                            <TransformGroup>
+                                <TransformGroup.Children>
+                                    <TransformCollection>
+                                        <RotateTransform Angle="0"/>
+                                    </TransformCollection>
+                                </TransformGroup.Children>
+                            </TransformGroup>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Background" Value="LightGray"/>
+
+                </Style>
+                <Style x:Key="HeaderText">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Center" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+                <Style x:Key="TextInitializationHeader">
+
+                    <Setter Property="TextBlock.FontSize" Value="16" />
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+
+                </Style>
+                <Style x:Key="TextInitialization">
+
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+                <Style x:Key="HeaderMode">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Left" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+                <Style x:Key="ModeText">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Right" />
+                    <Setter Property="TextBlock.FontSize" Value="16" />
+
+                </Style>
+                <Style x:Key="ModeTextComment">
+                    <Setter Property="TextBlock.Margin" Value="3"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Normal"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Left" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+                <Style x:Key="meisureGrid">
+
+                    <Setter Property="TextBlock.FontWeight" Value="Normal"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Center" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+                <Style x:Key="SeparatorLine">
+
+                    <Setter Property="TextBlock.Margin" Value="7"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="34" Grid.RowSpan="4">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#C4D4D3DC" Offset="0"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="1"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="0.531"></GradientStop>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Label Grid.Column="12" Grid.ColumnSpan="13" Grid.RowSpan="4"  Style="{StaticResource HeaderText}" Margin="10,10,12,12" Width="277">Системные настройки</Label>
+            <Button Focusable="False" Grid.Row="0" Grid.Column="30" Grid.ColumnSpan="4" Grid.RowSpan="5" 
+                x:Name="btnBack" Foreground="White" ClickMode="Press"  PreviewMouseDown="btnBack_PreviewMouseDown"
+                     Background="{x:Null}" BorderBrush="{x:Null}" Margin="22.343,-2,5.371,12">
+                <StackPanel>
+                    <Image Source="img/Icon-Home.png" Height="58" />
+                </StackPanel>
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                        <Setter Property="TextBlock.HorizontalAlignment" Value="Stretch" />
+                        <Setter Property="TextBlock.FontSize" Value="18" />
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+                        <Setter Property="HorizontalAlignment" Value="Stretch" />
+                    </Style>
+                </Button.Resources>
+
+            </Button>
+
+            <Grid Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="15" Grid.RowSpan="28" x:Name="panelleft" IsEnabled="False">
+
+                <Grid Margin="0,0,0,358" x:Name="lblXTJZ">
+                    <Label Content="Калибровка" Style="{StaticResource HeaderMode}" Margin="0,-2,0,10"></Label>
+                    <Label x:Name="lblxtjzc" Content=" >" Style="{StaticResource ModeText}" Margin="0,0,0,12" MinWidth="7" 
+                            PreviewMouseDown="Calibration_PreviewMouseDown" ></Label>
+                    <Separator Margin="0,32,0,0" Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top"/>
+                </Grid>
+                <Grid Margin="0,46,0,303" x:Name="lblBrandWidth">
+                    <Label Content="Пропускная способность" Style="{StaticResource HeaderMode}" Margin="-2,0,0,6"/>
+                    <Label x:Name="lblGPDK" Content="  1.8(нм) >" Style="{StaticResource ModeText}" Margin="0,2,0,9" MinWidth="50"
+                            PreviewMouseDown="Bandwidth_PreviewMouseDown" ></Label>
+                    <Separator Margin="-2,34,0,0" Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top"/>
+                </Grid>
+                <Grid  Margin="0,114,0,220">
+                    <Label Content="Источник света" Style="{StaticResource HeaderMode}" Margin="0,-8,0,43"/>
+                    <Label Content="Вольфрамовая лампа / дейтериевая лампа" x:Name="lblLightSource" Style="{StaticResource ModeTextComment}" MinWidth="330" Margin="-2,20,0,15"/>
+                    <Label x:Name="lblGY" Content=" >" Style="{StaticResource ModeText}" Margin="0,-8,0,15" MinWidth="7" 
+                            PreviewMouseDown="LightSource_PreviewMouseDown" ></Label>
+                    <Separator Margin="-2,50,0,0" Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top"/>
+                </Grid>
+                <Grid  Margin="0,184,0,147">
+                    <Label Content="Точность" Style="{StaticResource HeaderMode}" Margin="2,-10,0,22"/>
+                    <Label Content="Абсорбция / пропускание / концентрация" x:Name="lblAccurcy" Style="{StaticResource ModeTextComment}" MinWidth="328" Margin="0,20,0,0"/>
+                    <Label x:Name="lblJD" Content="  0.0000, 0.00%, 0.00 >" Style="{StaticResource ModeText}" MinWidth="7" Margin="0,-8,0,31"
+                            PreviewMouseDown="Accuracy_PreviewMouseDown"></Label>
+                    <Separator Style="{StaticResource SeparatorLineHorizontale}" Height="2" VerticalAlignment="Top" Margin="0,48,0,0"/>
+                </Grid>
+                <Grid  Margin="0,246,0,107" IsEnabled="False">
+                    <Label Content="Язык" Style="{StaticResource HeaderMode}" Width="95" Margin="0,0,0,15"/>
+                    <Label x:Name="Language" Content="  Русский" Style="{StaticResource ModeText}" MinWidth="50" Margin="0,0,0,13"></Label>
+                    <Separator Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top" Margin="0,35,0,0"/>
+                </Grid>
+
+                <Grid  Margin="0,306,0,53" IsEnabled="False">
+                    <Label Content="Принтер" Style="{StaticResource HeaderMode}" Width="241" Margin="1,1,0,1"/>
+                    <Label x:Name="Printer" Content="  1 >" Style="{StaticResource ModeText}" MinWidth="7" 
+                            PreviewMouseDown="Printer_PreviewMouseDown"></Label>
+                    <Separator Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top" Margin="-1,45,1,-5"/>
+                </Grid>
+
+                <Grid  Margin="0,350,0,10">
+                    <Label Content="Общие настройки" Style="{StaticResource HeaderMode}" Width="241" Margin="1,1,-3,1"/>
+                    <Label x:Name="lblKJZJ" Content="  >" Style="{StaticResource ModeText}" MinWidth="7" Margin="0,3,0,-1"
+                            PreviewMouseDown="GeneralOptions_PreviewMouseDown"></Label>
+
+                </Grid>
+
+            </Grid>
+            <Separator Style="{StaticResource SeparatorLine}" Margin="0,0,-3,14" Grid.ColumnSpan="17" Grid.Column="17" Grid.Row="4" >
+                <Separator.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="89.989"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Separator.RenderTransform>
+            </Separator>
+
+            <Grid Grid.Column="18" Grid.Row="4" Grid.ColumnSpan="15" Grid.RowSpan="28" x:Name="RightSettings" IsEnabled="True">
+
+                <Grid Margin="0,0,0,353">
+                    <Label Content="Тип" Style="{StaticResource HeaderMode}" Margin="0,0,0,3"></Label>
+                    <Label x:Name="lbltype" Content=" >" Style="{StaticResource ModeText}" Margin="0,2,2,5" MinWidth="7"></Label>
+                    <Separator Margin="0,41,2,0" Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top"/>
+                </Grid>
+
+                <Grid Margin="0,50,0,303">
+                    <Label Content="ID" Style="{StaticResource HeaderMode}" Margin="0,0,0,3"></Label>
+                    <Label x:Name="lblID" Content=" >" Style="{StaticResource ModeText}" Margin="0,2,2,5" MinWidth="7" PreviewMouseDown="ID_PreviewMouseDown"></Label>
+                    <Separator Margin="0,41,2,0" Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top"/>
+                </Grid>
+
+                <Grid Margin="0,100,0,253">
+                    <Label Content="Серийный номер" Style="{StaticResource HeaderMode}" Margin="0,0,0,3"></Label>
+                    <Label x:Name="lblserialno" Content=" >" Style="{StaticResource ModeText}" Margin="0,2,2,5" MinWidth="7" PreviewMouseDown="SerialNumber_PreviewMouseDown"></Label>
+                    <Separator Margin="0,41,2,0" Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top"/>
+                </Grid>
+                <Grid Margin="0,150,0,203">
+                    <Label Content="Версия оборудования" Style="{StaticResource HeaderMode}" Margin="0,0,0,3"></Label>
+                    <Label x:Name="lblhv" Content=" >" Style="{StaticResource ModeText}" Margin="0,2,2,5" MinWidth="7" PreviewMouseDown="HardwareVersion_PreviewMouseDown"></Label>
+                    <Separator Margin="0,41,2,0" Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top"/>
+                </Grid>
+                <Grid Margin="0,200,0,153">
+                    <Label Content="Версия прошивки" Style="{StaticResource HeaderMode}" Margin="0,0,0,3"></Label>
+                    <Label x:Name="lblfirmwareV" Content=" >" Style="{StaticResource ModeText}" Margin="0,2,2,5" MinWidth="7" PreviewMouseDown="FirmwareVersion_PreviewMouseDown"></Label>
+                    <Separator Margin="0,41,2,0" Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top"/>
+                </Grid>
+                <Grid Margin="0,250,0,103">
+                    <Label Content="Версия ПО" Style="{StaticResource HeaderMode}" Margin="0,0,0,3"></Label>
+                    <Label x:Name="SoftwareVersion" Content=" >" Style="{StaticResource ModeText}" Margin="0,2,2,5" MinWidth="7" PreviewMouseDown="SoftwareVersion_PreviewMouseDown"></Label>
+                    <Separator Margin="0,41,2,0" Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top"/>
+                </Grid>
+
+
+
+            </Grid>
+
+            <ProgressBar Grid.Column="1" Grid.Row="32" Grid.ColumnSpan="33" Margin="10,0,13,10" x:Name="progressBar1"></ProgressBar>
+
+            <Rectangle Grid.Column="0" Grid.Row="33" Grid.ColumnSpan="34" Grid.RowSpan="4">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#C4D4D3DC" Offset="0"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="1"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="0.531"></GradientStop>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Button Focusable="False"
+                     Style="{StaticResource ButtonText}" Grid.Column="1" Grid.Row="34" Grid.ColumnSpan="5" 
+                Grid.RowSpan="2" x:Name="btnDefaultSet" ClickMode="Press"  PreviewMouseDown="BtnStandartSettings_PreviewMouseDown">Восстановить настройки</Button>
+        </Grid>
+
+    </Border>
+</Window>

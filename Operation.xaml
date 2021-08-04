@@ -1,0 +1,145 @@
+﻿<Window x:Class="UVStudio.Operation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UVStudio"
+        mc:Ignorable="d"
+        Title="Operation" MinHeight="380" MinWidth="600"  WindowState="Normal" WindowStartupLocation="CenterScreen" >
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="{x:Type Button}">
+                <Style.Triggers>
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <ScaleTransform ScaleX="0.85" ScaleY="0.85"/>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                </Style.Triggers>
+                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="brdr" TextBlock.Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+            </Style>
+            <Style x:Key="ButtonText" TargetType="{x:Type Button}">
+                <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                <Setter Property="Foreground" Value="#FF000000"></Setter>
+
+                <Setter Property="TextBlock.FontSize" Value="16" />
+                <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="0">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                        <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                        <Setter Property="Foreground" Value="#FF000000"></Setter>
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                        <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                        <Setter Property="Foreground" Value="#FF000000"></Setter>
+                    </Trigger>
+                    <Trigger Property="IsDefaulted" Value="True">
+                        <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                        <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                        <Setter Property="Foreground" Value="#FF000000"></Setter>
+                    </Trigger>
+
+                </Style.Triggers>
+
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="2" Grid.Row="6" Grid.RowSpan="5" Grid.ColumnSpan="5"  IsEnabled="False">
+            <Button Focusable="False"
+                     Style="{StaticResource ButtonText}" Margin="0,0,0,72" Background="{x:Null}" BorderBrush="{x:Null}" >
+                <StackPanel>
+                    <Image Source="img/Log Out-02-WF.png" Height="62"/>
+                    <TextBlock Text="Сменить пользователя" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+        </Grid>
+        <Grid Grid.Column="9" Grid.Row="6" Grid.RowSpan="3" Grid.ColumnSpan="5" Margin="0,0,0,10">
+            <Button Focusable="False"
+                     Style="{StaticResource ButtonText}" x:Name="BackToWindows" ClickMode="Press" 
+                    PreviewMouseDown="BackToWindows_PreviewMouseDown" Margin="0,0,0,-6" 
+                    Background="{x:Null}" BorderBrush="{x:Null}">
+                <StackPanel>
+                    <Image Source="img/Windows Tablet-WF.png" Height="60"/>
+                    <TextBlock Text="Вернуться в Windows" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+        </Grid>
+        <Grid Grid.Column="15" Grid.Row="6" Grid.RowSpan="3" Grid.ColumnSpan="5" IsEnabled="False">
+            <Button Focusable="False"
+                     Style="{StaticResource ButtonText}" Background="{x:Null}" Margin="0,0,0,10" BorderBrush="{x:Null}">
+                <StackPanel>
+                    <Image Source="img/Power Off-01-WF.png" Height="65"/>
+                    <TextBlock Text="Выход" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+        </Grid>
+
+
+    </Grid>
+</Window>

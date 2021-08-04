@@ -1,0 +1,339 @@
+﻿<Window x:Class="UVStudio.PhotoMertyFrm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UVStudio"
+        mc:Ignorable="d"
+        Title="PhotoMertyFrm"  MinHeight="450" MinWidth="720" WindowState="Maximized" WindowStartupLocation="CenterOwner" ShowInTaskbar="True" AllowsTransparency="True" WindowStyle="None">
+    <Border BorderBrush="Black">
+        <Grid>
+            <Grid.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="0.85" ScaleY="0.85"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                    <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="brdr" TextBlock.Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                </Style>
+                <Style x:Key="HeaderText">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Center" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+                <Style x:Key="TextInitializationHeader">
+
+                    <Setter Property="TextBlock.FontSize" Value="16" />
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+
+                </Style>
+                <Style x:Key="ButtonText" TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                    <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                    <Setter Property="Foreground" Value="#FF000000"></Setter>
+
+                    <Setter Property="TextBlock.FontSize" Value="16" />
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                            <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                            <Setter Property="Foreground" Value="#FF000000"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                            <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                            <Setter Property="Foreground" Value="#FF000000"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsDefaulted" Value="True">
+                            <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                            <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                            <Setter Property="Foreground" Value="#FF000000"></Setter>
+                        </Trigger>
+
+                    </Style.Triggers>
+
+                </Style>
+                <Style x:Key="TextInitialization">
+
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+                <Style x:Key="HeaderMode">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Center" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+                <Style x:Key="meisureGrid">
+
+                    <Setter Property="TextBlock.FontWeight" Value="Normal"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Center" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="34" Grid.RowSpan="4" Margin="0,0,1.712,0">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#C4D4D3DC" Offset="0"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="1"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="0.531"></GradientStop>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <Label Grid.Row="0" Grid.ColumnSpan="6" Grid.RowSpan="3" 
+                   Style="{StaticResource TextInitializationHeader}" Margin="13,7,0,9" Content="Длина волны:"/>
+            <Label Grid.Column="6" Grid.ColumnSpan="4" Grid.RowSpan="3" 
+                   Style="{StaticResource TextInitialization}" Margin="0,9,18,8" x:Name="lblWL" Content="300.50 нм"/>
+
+            <Label Grid.Column="12" Grid.ColumnSpan="13" Grid.RowSpan="3"  Style="{StaticResource HeaderText}" Margin="4,5,18,2" Width="277">Фотометрический режим</Label>
+            <Button Focusable="False" Grid.Row="0" Grid.Column="30" Grid.ColumnSpan="4" Grid.RowSpan="5" 
+                x:Name="Home" Foreground="White" ClickMode="Press"  PreviewMouseDown="Home_PreviewMouseDown"
+                     Background="{x:Null}" BorderBrush="{x:Null}" Margin="22.343,-2,5.371,12">
+                <StackPanel>
+                    <Image Source="img/Icon-Home.png" Height="58" />
+                </StackPanel>
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                        <Setter Property="TextBlock.HorizontalAlignment" Value="Stretch" />
+                        <Setter Property="TextBlock.FontSize" Value="18" />
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+                        <Setter Property="HorizontalAlignment" Value="Stretch" />
+                    </Style>
+                </Button.Resources>
+
+            </Button>
+
+            <Border BorderBrush="#FFA4A2A2" BorderThickness="1" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="10" Grid.RowSpan="10">
+                <Grid >
+                    <Label Grid.RowSpan="1" 
+                        Style="{StaticResource HeaderMode}" Margin="10,10,37,98" HorizontalAlignment="Stretch">Текущие значения</Label>
+                    <Label Grid.RowSpan="1" 
+                        Style="{StaticResource HeaderMode}" x:Name="lblUnitA" Margin="10,48,189,60" HorizontalAlignment="Stretch">Abs</Label>
+                    <Label Grid.Column="0" 
+                   Style="{StaticResource HeaderMode}" x:Name="lblValueA" Margin="72,48,0,63" HorizontalAlignment="Left">- - - - - - -</Label>
+                    <Label Grid.RowSpan="1" 
+                        Style="{StaticResource HeaderMode}" x:Name="lblUnitT" Margin="10,88,195,20" HorizontalAlignment="Stretch">%T</Label>
+                    <Label Grid.Column="0" 
+                   Style="{StaticResource HeaderMode}" x:Name="lblValueT" Margin="72,88,78,23" HorizontalAlignment="Stretch">- - - - - - -</Label>
+
+                </Grid>
+            </Border>
+
+
+            <Border BorderBrush="#FFA4A2A2" BorderThickness="1" Grid.Column="1" Grid.Row="17" Grid.ColumnSpan="10" Grid.RowSpan="13">
+                <Grid>
+                    <Label Grid.RowSpan="1" 
+                        Style="{StaticResource HeaderMode}" Margin="10,10,37,144" HorizontalAlignment="Stretch">Автосемплер</Label>
+                </Grid>
+            </Border>
+            <DataGrid RowHeight="60" ItemsSource="{Binding}" x:Name="meisureGrid" CanUserAddRows="False"  
+                      AutoGenerateColumns="False" Grid.Column="12" Grid.Row="6" Grid.ColumnSpan="21" Grid.RowSpan="24"
+                      Style="{StaticResource meisureGrid}" HorizontalAlignment="Stretch" Background="White" 
+                      BorderBrush="White" CanUserResizeRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="№" Binding="{Binding Number}" IsReadOnly="True" MinWidth="50" Visibility="Hidden"/>
+                    <!--<DataGridTextColumn Header="Наименование" Binding="{Binding Name}"  MinWidth="300"  />-->
+                    <DataGridTemplateColumn MinWidth="300">
+                        <DataGridTemplateColumn.Header>
+                            <Label Content="Наименование"></Label>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox x:Name="Name" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                                      PreviewMouseDown="Name_PreviewMouseDown"    ></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Длина&#xA;волны" Binding="{Binding WL}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="Оптическая&#xA;плотность" Binding="{Binding Abs}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="%T" Binding="{Binding TProcent}" IsReadOnly="True" MinWidth="50"/>
+                    <DataGridTextColumn Header="Дата" Binding="{Binding DateTime_}" IsReadOnly="True" MinWidth="150"/>
+
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <CheckBox x:Name="cbxAll"
+                                          IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
+                                    AncestorType=local:MainWindow}, Path=ViewModel.AllSelected}" 
+                                          Checked="CheckBox_Checked" Unchecked="UnheckBox_Checked">Все</CheckBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding BooleanFlag, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!--<Grid Grid.Row="30" Grid.ColumnSpan="33" Margin="22,5,0.634,5" Grid.RowSpan="3">
+                <Label Content="dddd" Margin="0,-5,0.366,15" x:Name="lblProgress"></Label>
+                <ProgressBar Height="5" x:Name="progressBar1" Margin="0,23,0.366,5"/>
+            </Grid>-->
+
+            <ProgressBar Grid.Column="1" Grid.Row="31" Grid.ColumnSpan="33" Height="5" x:Name="progressBar1" Margin="0.667,5,22.3,5"/>
+            <Rectangle Grid.Column="0" Grid.Row="33" Grid.ColumnSpan="34" Grid.RowSpan="4" Margin="0,0,1.712,0">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#C4D4D3DC" Offset="0"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="1"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="0.531"></GradientStop>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Button Focusable="False" Grid.Column="1" Grid.Row="34" Grid.ColumnSpan="3" Grid.RowSpan="2"
+                     Style="{StaticResource ButtonText}" x:Name="MeisureEnergy" ClickMode="Press" 
+                    PreviewMouseDown="MeisureEnergy_PreviewMouseDown" Content="Измерить энергию" Visibility="Collapsed"/>
+            <Button Focusable="False" Grid.Row="34" Grid.ColumnSpan="4" Grid.RowSpan="2"
+                    x:Name="Set_Wl" ClickMode="Press" Margin="16,0,7.3,0" Style="{StaticResource ButtonText}" 
+                    PreviewMouseDown="Set_Wl_PreviewMouseDown">Длина волны</Button>
+            <Button Focusable="False" Grid.Column="4" Grid.Row="34"
+                     Style="{StaticResource ButtonText}" 
+                    Grid.ColumnSpan="4" Grid.RowSpan="2" x:Name="btnBlank" ClickMode="Press" RenderTransformOrigin="0.106,0.5" 
+                    Margin="15.7,0,6.7,0"  PreviewMouseDown="Zero_PreviewMouseDown">Обнуление</Button>
+            <Button Focusable="False" Grid.Column="8" Grid.Row="34"
+                     Style="{StaticResource ButtonText}"
+                    Grid.ColumnSpan="4" Grid.RowSpan="2" x:Name="Meisure" ClickMode="Press" 
+                     PreviewMouseDown="Meisure_PreviewMouseDown" Margin="15.3,0,7,0" >Измерить</Button>
+            <Button Focusable="False" Grid.Column="14" Grid.Row="34"
+                     Style="{StaticResource ButtonText}" Grid.ColumnSpan="4" 
+                    Grid.RowSpan="2" x:Name="DeleteRow" Margin="14.769,0,9.692,0" ClickMode="Press"
+                     PreviewMouseDown="DeleteRow_PreviewMouseDown">Удалить строку</Button>
+            <Button Focusable="False" Grid.Column="18" Grid.Row="34" Grid.ColumnSpan="4"
+                     Style="{StaticResource ButtonText}" Grid.RowSpan="2" x:Name="Open" ClickMode="Press"
+                    PreviewMouseDown="Open_PreviewMouseDown" Margin="16.308,0,7.308,0">Открыть</Button>
+            <Button Focusable="False" Grid.Column="22" Grid.Row="34" Grid.ColumnSpan="4" 
+                     Style="{StaticResource ButtonText}" Grid.RowSpan="2" 
+                    x:Name="Save" Margin="17.692,0,7.495,0" ClickMode="Press"  PreviewMouseDown="Save_PreviewMouseDown" RenderTransformOrigin="0.03,0.607" >Сохранить</Button>
+            <!--<Button Focusable="False" Grid.Column="26" Grid.Row="34" Grid.ColumnSpan="4" 
+                     Style="{StaticResource ButtonText}" Grid.RowSpan="2" 
+                    x:Name="ExportWord" Margin="13,0,10,0" ClickMode="Press"  PreviewMouseDown="ExportWord_PreviewMouseDown" >Экспот Word</Button>-->
+            <!--<Button Focusable="False" Grid.Column="26" Grid.Row="34" Grid.ColumnSpan="4" 
+                     Style="{StaticResource ButtonText}" Grid.RowSpan="2" 
+                    x:Name="btnToExcel" Margin="16.505,0,6.78,0" ClickMode="Press"  PreviewMouseDown="BtnToExcel_PreviewMouseDown" >Excel</Button>-->
+            <Button Focusable="False" Grid.Column="30" Grid.Row="34" Grid.ColumnSpan="4" 
+                     Style="{StaticResource ButtonText}" Grid.RowSpan="2" 
+                    x:Name="btnToPdf" Margin="9.22,0,11.495,0" ClickMode="Press"  PreviewMouseDown="BtnToPdf_PreviewMouseDown" >PDF</Button>
+            <Button Focusable="False" Grid.Column="30" Grid.Row="34" Grid.ColumnSpan="4" 
+                     Style="{StaticResource ButtonText}" Grid.RowSpan="2" 
+                    x:Name="btnToPrint" Margin="9.22,0,11.495,0" ClickMode="Press"  PreviewMouseDown="BtnToPrint_PreviewMouseDown" >Печать</Button>
+            <!--<Button Focusable="False" Grid.Column="30" Grid.Row="34" Grid.ColumnSpan="3" 
+                     Style="{StaticResource ButtonText}" Grid.RowSpan="2" x:Name="Print">Печать</Button>-->
+            <!--<Button Focusable="False" Grid.Column="29" Grid.Row="4" Grid.ColumnSpan="4" Grid.RowSpan="2" x:Name="DeleteRow" ClickMode="Press" PreviewMouseDown="DeleteRow_PreviewMouseDown">Удалить строку</Button>
+            <Button Focusable="False" Grid.Column="29" Grid.Row="7" Grid.ColumnSpan="4" Grid.RowSpan="2" x:Name="Open" ClickMode="Press" PreviewMouseDown="Open_PreviewMouseDown">Открыть</Button>
+            <Button Focusable="False" Grid.Column="29" Grid.Row="10" Grid.ColumnSpan="4" Grid.RowSpan="2" x:Name="Save" ClickMode="Press" PreviewMouseDown="Save_PreviewMouseDown" >Сохранить</Button>
+            <Button Focusable="False" Grid.Column="29" Grid.Row="13" Grid.ColumnSpan="4" Grid.RowSpan="2" x:Name="Print">Печать</Button>-->
+        </Grid>
+    </Border>
+</Window>

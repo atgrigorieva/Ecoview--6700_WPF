@@ -1,0 +1,436 @@
+﻿<Window x:Class="UVStudio.MulWLFrm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UVStudio"
+        mc:Ignorable="d"
+        Title="MulWLFrm" MinHeight="450" MinWidth="720" WindowState="Maximized" WindowStartupLocation="CenterOwner" ShowInTaskbar="True" AllowsTransparency="True" WindowStyle="None">
+    <Border BorderBrush="Black">
+        <Grid>
+            <Grid.Resources>
+                <Style x:Key="ButtonText" TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                    <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                    <Setter Property="Foreground" Value="#FF000000"></Setter>
+
+                    <Setter Property="TextBlock.FontSize" Value="16" />
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                            <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                            <Setter Property="Foreground" Value="#FF000000"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                            <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                            <Setter Property="Foreground" Value="#FF000000"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsDefaulted" Value="True">
+                            <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                            <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                            <Setter Property="Foreground" Value="#FF000000"></Setter>
+                        </Trigger>
+
+                    </Style.Triggers>
+
+                </Style>
+                <Style x:Key="HeaderText">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Center" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="0.85" ScaleY="0.85"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+
+                    </Style.Triggers>
+                    <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="brdr" TextBlock.Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                </Style>
+                <Style x:Key="SeparatorLine">
+
+                    <Setter Property="TextBlock.Margin" Value="7"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+
+                </Style>
+                <Style x:Key="TextInitializationHeader">
+
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+                <Style x:Key="TextInitialization">
+
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+
+                <Style x:Key="HeaderMode">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Center" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+                <Style x:Key="meisureGrid">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Normal"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Center" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+
+                <Style x:Key="{x:Type Label}" TargetType="Label">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Label">
+                                <Border>
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            RecognizesAccessKey="True" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+
+                </Style>
+
+
+            </Grid.Resources>
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+
+            <Rectangle Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="34" Grid.RowSpan="4">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#C4D4D3DC" Offset="0"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="1"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="0.531"></GradientStop>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <Label Grid.Column="12" Grid.ColumnSpan="13" Grid.RowSpan="4"  Style="{StaticResource HeaderText}" Margin="10,10,12,12" Width="277">Мультиволновой режим</Label>
+            <Button Focusable="False" Grid.Row="0" Grid.Column="30" Grid.ColumnSpan="4" Grid.RowSpan="5" 
+                x:Name="btnBack" Foreground="White" ClickMode="Press"  PreviewMouseDown="Home_PreviewMouseDown"
+                     Background="{x:Null}" BorderBrush="{x:Null}" Margin="22.343,-2,5.371,12">
+                <StackPanel>
+                    <Image Source="img/Icon-Home.png" Height="58" />
+                </StackPanel>
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                        <Setter Property="TextBlock.HorizontalAlignment" Value="Stretch" />
+                        <Setter Property="TextBlock.FontSize" Value="18" />
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+                        <Setter Property="HorizontalAlignment" Value="Stretch" />
+                    </Style>
+                </Button.Resources>
+
+            </Button>
+
+            <!--Строка заголовков-->
+            <Label Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="4" Grid.RowSpan="2" 
+                   Style="{StaticResource TextInitializationHeader}">Номер серии</Label>
+            <Label Grid.Column="25" Grid.Row="4" Grid.ColumnSpan="5" Grid.RowSpan="2" 
+                   Style="{StaticResource TextInitializationHeader}">Длина волны</Label>
+            <Label Grid.Column="6" Grid.Row="4" Grid.ColumnSpan="4" Grid.RowSpan="2" 
+                   Style="{StaticResource TextInitializationHeader}" Margin="0,0,19,0">Режим</Label>
+            <Label Grid.Column="25" Grid.Row="4" Grid.ColumnSpan="5" Grid.RowSpan="2" 
+                   Style="{StaticResource TextInitializationHeader}">Длина волны</Label>
+
+            <Label Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="4" Grid.RowSpan="3" 
+                   Style="{StaticResource TextInitialization}" Margin="0,11,0,7" x:Name="lblNo"></Label>
+            <Label Grid.Column="6" Grid.Row="5" Grid.ColumnSpan="3" Grid.RowSpan="3" 
+                   Style="{StaticResource TextInitialization}" Margin="0,10,0,8" x:Name="lblmode"></Label>
+            <Label Grid.Column="25" Grid.Row="5" Grid.ColumnSpan="5" Grid.RowSpan="3" 
+                   Style="{StaticResource TextInitialization}" Margin="0,9" x:Name="lblWL"></Label>
+
+            <Separator Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="34" Style="{StaticResource SeparatorLine}"/>
+
+            <!-- <Label Grid.Column="5" Grid.Row="7" Grid.ColumnSpan="2" Grid.RowSpan="3" 
+                   Style="{StaticResource HeaderMode}" x:Name="lblUnit" Margin="2,10,0,2">Abs</Label>
+
+            <Label Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="5" Grid.RowSpan="3" 
+                   Style="{StaticResource HeaderMode}" x:Name="lblValue" Margin="10,1,10,10">- - - - - - -</Label>-->
+
+
+            <!-- <StackPanel Grid.Row="12" Grid.ColumnSpan="32" Grid.RowSpan="13" Grid.Column="1">
+                <Label x:Name="lblA1" Background="AliceBlue" Content="A1&#xA;A2" Width="46" Height="30" HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="1" />
+            </StackPanel>-->
+
+
+
+            <!--<Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="8" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="1" Background="AliceBlue">
+                <Label Content="" Name="lblA1" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="8" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="3" Background="AliceBlue">
+                <Label Content="" Name="lblA2" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="8" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="5" Background="AliceBlue">
+                <Label Content="" Name="lblA3" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="8" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="7" Background="AliceBlue">
+                <Label Content="" Name="lblA4" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="8" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="9" Background="AliceBlue">
+                <Label Content="" Name="lblA5" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="8" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="11" Background="AliceBlue">
+                <Label Content="" Name="lblA6" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="8" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="13" Background="AliceBlue">
+                <Label Content="" Name="lblA7" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="8" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="15" Background="AliceBlue">
+                <Label Content="" Name="lblA8" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="8" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="17" Background="AliceBlue">
+                <Label Content="" Name="lblA9" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="8" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="19" Background="AliceBlue">
+                <Label Content="" Name="lblA10" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="11" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="1" Background="White">
+                <Label Content="" Name="lblA1V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="11" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="3" Background="White">
+                <Label Content="" Name="lblA2V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="11" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="5" Background="White">
+                <Label Content="" Name="lblA3V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="11" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="7" Background="White">
+                <Label Content="" Name="lblA4V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="11" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="9" Background="White">
+                <Label Content="" Name="lblA5V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="11" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="11" Background="White">
+                <Label Content="" Name="lblA6V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="11" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="13" Background="White">
+                <Label Content="" Name="lblA7V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="11" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="15" Background="White">
+                <Label Content="" Name="lblA8V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="11" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="17" Background="White">
+                <Label Content="" Name="lblA9V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="11" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="19" Background="White">
+                <Label Content="" Name="lblA10V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="17" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="1" Background="AliceBlue">
+                <Label Content="" Name="lblA11" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="17" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="3" Background="AliceBlue">
+                <Label Content="" Name="lblA12" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="17" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="5" Background="AliceBlue">
+                <Label Content="" Name="lblA13" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="17" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="7" Background="AliceBlue">
+                <Label Content="" Name="lblA14" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="17" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="9" Background="AliceBlue">
+                <Label Content="" Name="lblA15" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="17" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="11" Background="AliceBlue">
+                <Label Content="" Name="lblA16" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="17" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="13" Background="AliceBlue">
+                <Label Content="" Name="lblA17" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="17" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="15" Background="AliceBlue">
+                <Label Content="" Name="lblA18" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="17" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="17" Background="AliceBlue">
+                <Label Content="" Name="lblA19" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="17" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="19" Background="AliceBlue">
+                <Label Content="" Name="lblA20" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="20" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="1" Background="White">
+                <Label Content="" Name="lblA11V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="20" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="3" Background="White">
+                <Label Content="" Name="lblA12V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="20" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="5" Background="White">
+                <Label Content="" Name="lblA13V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="20" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="7" Background="White">
+                <Label Content="" Name="lblA14V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="20" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="9" Background="White">
+                <Label Content="" Name="lblA15V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="20" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="11" Background="White">
+                <Label Content="" Name="lblA16V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="20" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="13" Background="White">
+                <Label Content="" Name="lblA17V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="20" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="15" Background="White">
+                <Label Content="" Name="lblA18V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="20" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="17" Background="White">
+                <Label Content="" Name="lblA19V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" Width="46" Grid.Row="20" Grid.ColumnSpan="2" Grid.RowSpan="3" Grid.Column="19" Background="White">
+                <Label Content="" Name="lblA20V" Background="White" Padding="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" ClipToBounds="True" />
+            </Border>-->
+
+
+            <DataGrid RowHeight="60" ItemsSource="{Binding}" x:Name="meisureGrid" AutoGenerateColumns="False" Grid.Row="9" 
+                      Grid.ColumnSpan="32" Grid.RowSpan="22"  
+                      Style="{StaticResource meisureGrid}" Margin="0,1,6,1" Grid.Column="1" HorizontalAlignment="Stretch" CanUserAddRows="False"/>
+
+            <ProgressBar Grid.Column="1" Grid.Row="32" Grid.ColumnSpan="32" Height="5" x:Name="progressBar1"/>
+
+            <Rectangle Grid.Column="0" Grid.Row="33" Grid.ColumnSpan="34" Grid.RowSpan="4">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#C4D4D3DC" Offset="0"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="1"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="0.531"></GradientStop>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <Button
+                     Style="{StaticResource ButtonText}" Grid.Column="1" Grid.Row="34" Grid.ColumnSpan="3" Grid.RowSpan="2"
+                x:Name="Open" ClickMode="Press"  PreviewMouseDown="Open_PreviewMouseDown">Открыть</Button>
+            <Button
+                     Style="{StaticResource ButtonText}" Grid.Column="5" Grid.Row="34" Grid.ColumnSpan="4" Grid.RowSpan="2" 
+                x:Name="Save" Margin="13,0,10,0" ClickMode="Press"  PreviewMouseDown="Save_PreviewMouseDown" >Сохранить</Button>
+            <Button
+                     Style="{StaticResource ButtonText}" Visibility="Collapsed" Grid.Column="9" Grid.Row="34" Grid.ColumnSpan="3" 
+                Grid.RowSpan="2" x:Name="Print">Печать</Button>
+
+            <Button
+                     Style="{StaticResource ButtonText}" Grid.Column="23" Grid.Row="34" Grid.ColumnSpan="3" Grid.RowSpan="2" 
+                x:Name="Method" ClickMode="Press"  PreviewMouseDown="Method_PreviewMouseDown">Настройки</Button>
+            <Button
+                     Style="{StaticResource ButtonText}" Grid.Column="26" Grid.Row="34" Grid.ColumnSpan="4" Grid.RowSpan="2" 
+                x:Name="btnBlank" ClickMode="Press" RenderTransformOrigin="0.106,0.5" Margin="10,0,12,0"
+                 PreviewMouseDown="BtnBlank_PreviewMouseDown">Обнуление</Button>
+            <Button
+                     Style="{StaticResource ButtonText}" Grid.Column="30" Grid.Row="34" Grid.ColumnSpan="3" Grid.RowSpan="2"
+                x:Name="btnScan" ClickMode="Press"  PreviewMouseDown="Meisure_PreviewMouseDown" >Измерение</Button>
+
+        </Grid>
+    </Border>
+</Window>
