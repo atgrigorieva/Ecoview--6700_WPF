@@ -1,0 +1,360 @@
+﻿<Window x:Class="UVStudio.MethodKineticsFrm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UVStudio"
+        mc:Ignorable="d"
+        Title="Настройки кинетического режима"  MinWidth="720" WindowState="Maximized" WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="True" AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded">
+    <Border BorderBrush="Black">
+        <Grid Margin="0,0,2,0">
+            <Grid.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="0.85" ScaleY="0.85"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                    <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="brdr" TextBlock.Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                </Style>
+                <Style x:Key="ButtonText" TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                    <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                    <Setter Property="Foreground" Value="#FF000000"></Setter>
+
+                    <Setter Property="TextBlock.FontSize" Value="16" />
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                            <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                            <Setter Property="Foreground" Value="#FF000000"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                            <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                            <Setter Property="Foreground" Value="#FF000000"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsDefaulted" Value="True">
+                            <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                            <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                            <Setter Property="Foreground" Value="#FF000000"></Setter>
+                        </Trigger>
+
+                    </Style.Triggers>
+
+                </Style>
+                <Style x:Key="HeaderText">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Center" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+
+                <Style x:Key="SeparatorLine">
+
+                    <Setter Property="TextBlock.Margin" Value="7"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+
+                </Style>
+                <Style x:Key="HeaderMode">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Left" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+                <Style x:Key="ModeText">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Right" />
+                    <Setter Property="TextBlock.FontSize" Value="16" />
+
+                </Style>
+                <Style x:Key="HeaderModeLambda">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Center" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+                <Style x:Key="SeparatorLineHorizontale" TargetType="{x:Type Separator}"
+                    BasedOn="{StaticResource {x:Type Separator}}">
+
+                    <Setter Property="LayoutTransform">
+                        <Setter.Value>
+                            <TransformGroup>
+                                <TransformGroup.Children>
+                                    <TransformCollection>
+                                        <RotateTransform Angle="0"/>
+                                    </TransformCollection>
+                                </TransformGroup.Children>
+                            </TransformGroup>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Background" Value="LightGray"/>
+
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Rectangle Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="34" Grid.RowSpan="4">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#C4D4D3DC" Offset="0"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="1"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="0.531"></GradientStop>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <Label Grid.Column="10" Grid.ColumnSpan="16" Grid.RowSpan="4"  Style="{StaticResource HeaderText}" 
+                   Margin="0,10,19,12" Width="347">Настройки кинетического режима</Label>
+            <Button Focusable="False" x:Name="CloseSettings" ClickMode="Press" PreviewMouseDown="CloseSettings_PreviewMouseDown" 
+                    
+                    Grid.Column="31" Grid.ColumnSpan="3" Margin="9,0,0,0" Grid.RowSpan="4"
+                    Background="{x:Null}" BorderBrush="{x:Null}">
+                <StackPanel>
+                    <Image Source="img/UI_DB_Return.png" Height="54" />
+                </StackPanel>
+            </Button>
+            <Grid Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="15" Grid.RowSpan="29" x:Name="LeftSettings" IsEnabled="False" Margin="0,0,0.133,5">
+                <Grid Margin="0,0,-0.133,373">
+                    <Label Content="Режим измерения" Style="{StaticResource HeaderMode}" Margin="0,0,0,12"></Label>
+                    <Label x:Name="lblModeV" Content="Кинетика >" Style="{StaticResource ModeText}" Margin="0,0,0,12" 
+                           MinWidth="1"  PreviewMouseDown="LblModeV_PreviewMouseDown"></Label>
+                    <Separator Margin="0,40,0,0" Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top"/>
+                </Grid>
+                <Grid Margin="0,53,1.867,313">
+                    <Label Content="Длина волны" Style="{StaticResource HeaderMode}" Margin="0,5,0,10"/>
+                    <Label x:Name="lblWLV" Content="  1100.0 >" Style="{StaticResource ModeText}" Margin="0,3,0.133,10" MinWidth="50" 
+                            PreviewMouseDown="LblWLV_PreviewMouseDown" ></Label>
+                    <Separator Margin="0,44,0.133,0" Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top"/>
+                </Grid>
+                <Grid  Margin="0,106,1.867,263">
+                    <Label Content="Коррекция фона" Style="{StaticResource HeaderMode}" Margin="2,0,0,10"/>
+                    <StackPanel Margin="490,-5,5,0">
+                        <Image Source="img/UI_DB_Switcher_Off.png" Height="42" x:Name="pibbackwl" 
+                                 PreviewMouseDown="Pibbackwl_PreviewMouseDown" Margin="0,0,3,0" />
+                    </StackPanel>
+                   
+                    <Separator Margin="0,35,0.133,0" Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top"/>
+                </Grid>
+                <Grid Margin="0,156,-0.133,211">
+                    <Label x:Name="lblBackwl" IsEnabled="False" Content="Коррекционная длина волны" Style="{StaticResource HeaderMode}" Margin="0,0,0,9"/>
+                    <Label x:Name="lblbackwlV" IsEnabled="False" Content="  1100.0 >" Style="{StaticResource ModeText}" MinWidth="50" 
+                            PreviewMouseDown="LblXmax_PreviewMouseDown" Margin="0,2,0.133,9" RenderTransformOrigin="0.494,0.713" ></Label>
+                    <Separator Style="{StaticResource SeparatorLineHorizontale}" Height="11" VerticalAlignment="Top" Margin="0,36,0.133,0"/>
+                </Grid>
+                <Grid  Margin="0,208,-0.133,156">
+                    <Label Content="Общее время (сек)" Style="{StaticResource HeaderMode}" Width="179" Margin="1,1,0,17"/>
+                    <Label x:Name="lblTimeV" Content="  1200 >" Style="{StaticResource ModeText}" MinWidth="50" Margin="0,1,1.133,17"
+                            PreviewMouseDown="LblTimeV_PreviewMouseDown"></Label>
+                    <Separator Style="{StaticResource SeparatorLineHorizontale}" Height="2" VerticalAlignment="Top" Margin="-1,38,1.133,0"/>
+                </Grid>
+                <Grid  Margin="0,263,-0.133,106">
+                    <Label Content="Интервал (сек)" Style="{StaticResource HeaderMode}" Width="149" Margin="1,1,0,10"/>
+                    <Label x:Name="lblIntervalV" Content="  1 >" Style="{StaticResource ModeText}" MinWidth="50"
+                            PreviewMouseDown="LblIntervalV_PreviewMouseDown" Margin="0,1,1.133,19"></Label>
+                    <Separator Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top" Margin="-1,36,1.133,0"/>
+                </Grid>
+
+                <Grid  Margin="0,313,-0.133,50">
+                    <Label x:Name="lbldlx" Content="Время задержки/Дифференциальное время (сек)" Style="{StaticResource HeaderMode}" MinWidth="268" Margin="1,1,0,11"/>
+                    <Label x:Name="lbldlxv" Content="  5/17 >" Style="{StaticResource ModeText}" MinWidth="50" 
+                            PreviewMouseDown="Lbldlxv_PreviewMouseDown" Margin="0,1,1.133,17"></Label>
+                    <Separator Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top" Margin="-1,45,1,-5"/>
+                </Grid>
+
+                <Grid  Margin="0,364,0,0">
+                    <Label x:Name="lblR" Content="Коэффициент" Style="{StaticResource HeaderMode}" MinWidth="235" Margin="0,7,0,10"/>
+                    <Label x:Name="lblRV" Content="  0.5,2,1,3 >" Style="{StaticResource ModeText}" MinWidth="50" Margin="0,10,1,10"
+                            PreviewMouseDown="LblXMin_PreviewMouseDown" RenderTransformOrigin="0.449,0.533"></Label>
+
+                </Grid>
+
+            </Grid>
+            <Separator Style="{StaticResource SeparatorLine}" Margin="0,0,00,14" Grid.ColumnSpan="17" Grid.Column="17" Grid.Row="4" >
+                <Separator.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Separator.RenderTransform>
+            </Separator>
+
+            <Grid Grid.Column="18" Grid.Row="4" Grid.ColumnSpan="15" Grid.RowSpan="28" x:Name="RightSettings" IsEnabled="False">
+                <Grid Margin="0,0,0,360">
+                    <Label Content="Оптический путь" Style="{StaticResource HeaderMode}" Margin="0,0,0,11"></Label>
+                    <Label x:Name="lblLengthV" Content="10 >" Style="{StaticResource ModeText}" Margin="0,2,2,5" MinWidth="50"
+                            PreviewMouseDown="LblLengthV_PreviewMouseDown"></Label>
+                    <Separator Margin="2,39,0,0" Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top"/>
+                </Grid>
+                <Grid Margin="0,61,0,299">
+                    <Label Content="Эквивалентное преобразование" Style="{StaticResource HeaderMode}" Margin="0,0,0,10"></Label>
+                    <StackPanel Margin="490,-5,5,0">
+                        <Image Source="img/UI_DB_Switcher_Off.png" Height="42" x:Name="pibEConvert" 
+                                 PreviewMouseDown="PibEConvert_PreviewMouseDown" Margin="0,0,3,0" RenderTransformOrigin="0.658,0.226" />
+                    </StackPanel>
+                   
+                    <Separator Margin="0,41,2,0" Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top"/>
+                </Grid>
+
+                <Grid Margin="0,111,0,249">
+                    <Label Content="Автоадаптация" Style="{StaticResource HeaderMode}" Margin="0,0,0,10"></Label>
+                    <StackPanel Margin="490,-5,5,0">
+                        <Image Source="img/UI_DB_Switcher_Off.png" Height="42" x:Name="pibAutoXY" 
+                                 PreviewMouseDown="PibAutoXY_PreviewMouseDown" Margin="0,0,3,0" />
+                    </StackPanel>
+                    <Separator Margin="0,41,2,0" Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top"/>
+                </Grid>
+
+
+                <Grid Margin="0,169,0,184" x:Name="lblYMax">
+                    <Label Content="Y Максимум" Style="{StaticResource HeaderMode}" Margin="0,0,0,16"></Label>
+                    <Label x:Name="lblYMaxV" Content=" 4 >" Style="{StaticResource ModeText}" Margin="0,2,2,16" MinWidth="50" PreviewMouseDown="YMax_PreviewMouseDown"></Label>
+                    <Separator Margin="0,41,2,0" Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top"/>
+                </Grid>
+
+                <Grid Margin="0,226,0,127" x:Name="lblYMin">
+                    <Label Content="Y Минимум" Style="{StaticResource HeaderMode}" Margin="0,0,0,16"></Label>
+                    <Label x:Name="lblYMinV" Content=" -4 >" Style="{StaticResource ModeText}" Margin="0,2,2,16" MinWidth="50" PreviewMouseDown="YMin_PreviewMouseDown"></Label>
+                    <Separator Margin="0,41,2,0" Style="{StaticResource SeparatorLineHorizontale}" Height="1" VerticalAlignment="Top"/>
+                </Grid>
+
+
+
+            </Grid>
+
+            <Rectangle Grid.Column="0" Grid.Row="33" Grid.ColumnSpan="34" Grid.RowSpan="4">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#C4D4D3DC" Offset="0"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="1"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="0.531"></GradientStop>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <Button Focusable="False"
+                     Style="{StaticResource ButtonText}" Grid.Column="1" Grid.Row="34" Grid.ColumnSpan="3" 
+                Grid.RowSpan="2" x:Name="New_method" ClickMode="Press" PreviewMouseDown="New_method_PreviewMouseDown">Создать</Button>
+            <Button Focusable="False" Grid.Column="4"  
+                     Style="{StaticResource ButtonText}" Grid.Row="34" Grid.ColumnSpan="4" Grid.RowSpan="2"
+                    x:Name="Open_method" Margin="13,0,10,0" ClickMode="Press"  PreviewMouseDown="Open_method_PreviewMouseDown">Открыть</Button>
+            <Button Focusable="False" 
+                     Style="{StaticResource ButtonText}" Grid.Column="8" Grid.Row="34" Grid.ColumnSpan="3"
+                Grid.RowSpan="2" x:Name="Save" ClickMode="Press"  PreviewMouseDown="Save_PreviewMouseDown" IsEnabled="False">Сохранить</Button>
+
+            <Button Focusable="False"
+                     Style="{StaticResource ButtonText}" Grid.Column="30" Grid.Row="34" Grid.ColumnSpan="3" Grid.RowSpan="2" 
+                x:Name="Finish" ClickMode="Press"  PreviewMouseDown="Finish_PreviewMouseDown" IsEnabled="False">Завершить</Button>
+
+
+        </Grid>
+    </Border>
+</Window>

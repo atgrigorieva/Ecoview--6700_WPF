@@ -1,0 +1,297 @@
+﻿<Window x:Class="UVStudio.MeathodDualFrm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UVStudio"
+        mc:Ignorable="d"
+        Title="MeathodDualFrm" MinHeight="450" MinWidth="720" WindowState="Maximized" WindowStartupLocation="CenterOwner" ShowInTaskbar="True" AllowsTransparency="False" WindowStyle="None" Loaded="Window_Loaded">
+    <Border BorderBrush="Black">
+        <Grid>
+            <Grid.Resources>
+                <Style x:Key="ButtonText" TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                    <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                    <Setter Property="Foreground" Value="#FF000000"></Setter>
+
+                    <Setter Property="TextBlock.FontSize" Value="16" />
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                            <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                            <Setter Property="Foreground" Value="#FF000000"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                            <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                            <Setter Property="Foreground" Value="#FF000000"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsDefaulted" Value="True">
+                            <Setter Property="Background" Value="#FFDDDDDD"></Setter>
+                            <Setter Property="BorderBrush" Value="#FF707070"></Setter>
+                            <Setter Property="Foreground" Value="#FF000000"></Setter>
+                        </Trigger>
+
+                    </Style.Triggers>
+
+                </Style>
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="0.85" ScaleY="0.85"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                    <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="brdr" TextBlock.Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                </Style>
+                <Style x:Key="HeaderText">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Center" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+                <Style x:Key="TextInitializationHeader">
+
+                    <Setter Property="TextBlock.FontSize" Value="16" />
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+
+                </Style>
+                <Style x:Key="TextInitialization">
+
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+                <Style x:Key="HeaderMode">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Left" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+                <Style x:Key="HeaderModeTable">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Normal"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Left" />
+                    <Setter Property="TextBlock.FontSize" Value="16" />
+
+                </Style>
+                <Style x:Key="ModeText">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Normal"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Right" />
+                    <Setter Property="TextBlock.FontSize" Value="16" />
+
+                </Style>
+                <Style x:Key="meisureGrid">
+
+                    <Setter Property="TextBlock.FontWeight" Value="Normal"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Center" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+
+                </Style>
+                <Style x:Key="SeparatorLine">
+
+                    <Setter Property="TextBlock.Margin" Value="7"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="34" Grid.RowSpan="4">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#C4D4D3DC" Offset="0"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="1"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="0.531"></GradientStop>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Label Grid.Column="11" Grid.ColumnSpan="16" Grid.RowSpan="3"  Style="{StaticResource HeaderText}" Margin="7,5,10,2" Width="341">2-компонентный анализ, Настройки</Label>
+            <Button Focusable="False" x:Name="btnBack" ClickMode="Press"  PreviewMouseDown="BtnBack_PreviewMouseDown"
+                    Grid.Column="31" Grid.ColumnSpan="3" Margin="9,0,0,0" Grid.RowSpan="4"
+                    Background="{x:Null}" BorderBrush="{x:Null}">
+                <StackPanel>
+                    <Image Source="img/UI_DB_Return.png" Height="54" />
+                </StackPanel>
+            </Button>
+            <Border BorderBrush="#FFA4A2A2" BorderThickness="1" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="16" Grid.RowSpan="28" Margin="0,5,0,0">
+                <Grid x:Name="left_settings">
+                    <Label x:Name="lblsc1" Style="{StaticResource HeaderMode}" Margin="1,1,0,354" MinWidth="326">Стандартное уравнение 1</Label>
+                    <Label x:Name="lblsc2" Style="{StaticResource HeaderMode}" Margin="0,42,0,313" MinWidth="326" Width="336">Стандартное уравнение 2</Label>
+                    <Label x:Name="lblf1" Style="{StaticResource HeaderMode}" Margin="0,83,0,272" MinWidth="326" Width="336">Коэффициент 1</Label>
+                    <Label x:Name="lblf2" Style="{StaticResource HeaderMode}" Margin="1,124,-1,231" MinWidth="326" Width="336">Коэффициент 2</Label>
+                    <Label x:Name="lblf3" Style="{StaticResource HeaderMode}" Margin="0,165,0,190" MinWidth="326" Width="336">Коэффициент 3</Label>
+                    <Label x:Name="lblf4" Style="{StaticResource HeaderMode}" Margin="1,206,-1,149" MinWidth="326" Width="336">Коэффициент 4</Label>
+
+
+                    <Label x:Name="label5" Style="{StaticResource HeaderMode}" Margin="0,242,0,113" MinWidth="50" Width="219">Контрольный образец</Label>
+                    <Label x:Name="lblcb1" Style="{StaticResource HeaderMode}" Margin="2,345,0,10" MinWidth="50" Width="86">Abs 1</Label>
+                    <Label x:Name="lblcb2" Style="{StaticResource HeaderMode}" Margin="88,278,0,77" MinWidth="50" Width="87">Abs 2</Label>
+
+                    <Label x:Name="label6" Style="{StaticResource HeaderMode}" Margin="2,309,0,46" MinWidth="50" Width="219">Стандартный образец</Label>
+                    <Label x:Name="lblsample1" Style="{StaticResource HeaderMode}" Margin="-3,278,0,77" MinWidth="50" Width="86">Abs 1</Label>
+                    <Label x:Name="lblsample2" Style="{StaticResource HeaderMode}" Margin="88,345,0,10" MinWidth="50" Width="87">Abs 2</Label>
+                    <Label x:Name="lblsample3" Style="{StaticResource HeaderMode}" Margin="180,345,0,10" MinWidth="50" Width="87">Конц 1</Label>
+                    <Label x:Name="lblsample4" Style="{StaticResource HeaderMode}" Margin="272,345,0,10" MinWidth="50" Width="86">Конц 2</Label>
+
+                </Grid>
+            </Border>
+            <Border BorderBrush="#FFA4A2A2" BorderThickness="1" Grid.Column="18" Grid.Row="4" Grid.ColumnSpan="15" Grid.RowSpan="28" Margin="0,5,0,0">
+                <Grid x:Name="right_settings">
+                    <Label Margin="0,0,0,356" Style="{StaticResource HeaderMode}">WL1</Label>
+                    <Label Margin="0,37,0,326" Style="{StaticResource HeaderMode}">Wl2</Label>
+                    <Label Margin="0,66,0,293" Style="{StaticResource HeaderMode}">Количество измерений</Label>
+                    <Label Margin="0,99,0,261" Style="{StaticResource HeaderMode}">Эквивалентная конверсия</Label>
+                    <Label Margin="0,131,0,231" Style="{StaticResource HeaderMode}">Длина луча, мм</Label>
+                    <Label Margin="0,166,0,191" Style="{StaticResource HeaderMode}">Уравнение</Label>
+                    <Label Margin="0,201,0,158" Style="{StaticResource HeaderMode}">Формула</Label>
+                    <Label Margin="0,239,0,120" Style="{StaticResource HeaderMode}">Нулева точка</Label>
+                    <Label Margin="0,272,0,89" Style="{StaticResource HeaderMode}">Калибровка</Label>
+                    <Label Margin="0,308,0,52" Style="{StaticResource HeaderMode}">Количество образцов</Label>
+                    <Label Margin="0,340,0,10" Style="{StaticResource HeaderMode}">Ед. измерения</Label>
+                    <!-- <Label Margin="0,373,0,0" Style="{StaticResource HeaderMode}">Порог</Label>-->
+
+                    <Label Margin="0,3,0,359" Style="{StaticResource ModeText}" x:Name="lblwl1V" Width="89"></Label>
+                    <Label Margin="0,38,0,323" Style="{StaticResource ModeText}" x:Name="lblWL2V"  Width="89"></Label>
+                    <Label Margin="0,73,0,293" Style="{StaticResource ModeText}" x:Name="lblMcntV" Width="89"></Label>
+                    <Label Margin="0,104,0,258" Style="{StaticResource ModeText}" x:Name="lbleconvertV"  Width="89"></Label>
+                    <Label Margin="0,137,0,231" Style="{StaticResource ModeText}" x:Name="lblgcv" Width="89"></Label>
+                    <Label Margin="0,174,0,193" Style="{StaticResource ModeText}" x:Name="lblfcv" Width="89"></Label>
+                    <Label Margin="0,207,0,158" Style="{StaticResource ModeText}" x:Name="lblFittingV" Width="89"></Label>
+                    <Label Margin="0,247,0,117" Style="{StaticResource ModeText}" x:Name="lblZeroBV" Width="89"></Label>
+                    <Label Margin="0,280,0,87" Style="{StaticResource ModeText}" x:Name="lblCabMethodV"  MinWidth="89"></Label>
+                    <Label Margin="0,313,0,52" Style="{StaticResource ModeText}" x:Name="lblSamCntV"  Width="89"></Label>
+                    <Label Margin="0,348,0,15" Style="{StaticResource ModeText}" x:Name="lblunitV"  Width="89"></Label>
+                    <!--<Label Margin="0,373,0,0" Style="{StaticResource ModeText}" x:Name="lblThresholdV">Порог</Label>-->
+
+                </Grid>
+            </Border>
+            <Rectangle Grid.Column="0" Grid.Row="33" Grid.ColumnSpan="34" Grid.RowSpan="4">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#C4D4D3DC" Offset="0"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="1"></GradientStop>
+                        <GradientStop Color="#C4D4D3DC" Offset="0.531"></GradientStop>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <Button Focusable="False"
+                     Style="{StaticResource ButtonText}" Grid.Column="1" Grid.Row="34" Grid.ColumnSpan="3"
+                Grid.RowSpan="2" x:Name="btnNew" ClickMode="Press"  PreviewMouseDown="BtnNew_PreviewMouseDown">Создать</Button>
+            <Button Focusable="False"
+                     Style="{StaticResource ButtonText}" Grid.Column="4" Grid.Row="34" Grid.ColumnSpan="4"
+                Grid.RowSpan="2" x:Name="Open_method" Margin="13,0,0,0" ClickMode="Press"
+                     PreviewMouseDown="Open_method_PreviewMouseDown">Открыть</Button>
+            <Button Focusable="False"
+                     Style="{StaticResource ButtonText}" Grid.Column="9" Grid.Row="34" Grid.ColumnSpan="4"
+                Grid.RowSpan="2" x:Name="btnSave" ClickMode="Press"  PreviewMouseDown="Save_PreviewMouseDown" IsEnabled="False" Margin="0,0,1,0">Сохранить</Button>
+            <Button Focusable="False"
+                     Style="{StaticResource ButtonText}" Grid.Column="28" Grid.Row="34" Grid.ColumnSpan="5"
+                Grid.RowSpan="2" x:Name="btnOK" ClickMode="Press" PreviewMouseDown="BtnOK_PreviewMouseDown" IsEnabled="False">Завершить</Button>
+
+
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,481 @@
+﻿<Window x:Class="UVStudio.MenuProgram"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UVStudio"
+        mc:Ignorable="d"
+        Title="MenuProgram" MinHeight="450" MinWidth="500" WindowState="Maximized" WindowStartupLocation="Manual" Closing="Window_Closing" AllowsTransparency="True" WindowStyle="None"  >
+    <Window.Background>
+        <ImageBrush ImageSource="img/bkg.png"/>
+    </Window.Background>
+    <Border BorderBrush="Black">
+        <Grid>
+            <Grid.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="0.85" ScaleY="0.85"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                    <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="brdr" TextBlock.Foreground="{TemplateBinding Foreground}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                </Style>
+                <Style x:Key="SeparatorLine" TargetType="{x:Type Separator}"
+                    BasedOn="{StaticResource {x:Type Separator}}">
+
+                    <Setter Property="LayoutTransform">
+                        <Setter.Value>
+                            <TransformGroup>
+                                <TransformGroup.Children>
+                                    <TransformCollection>
+                                        <RotateTransform Angle="90"/>
+                                    </TransformCollection>
+                                </TransformGroup.Children>
+                            </TransformGroup>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Background" Value="White"/>
+
+                </Style>
+
+                <Style x:Key="FontStyle">
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Center" />
+
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+                    <Setter Property="TextBlock.Foreground" Value="White"/>
+
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+
+                </Style>
+                <Style x:Key="HeaderText">
+                    <Setter Property="TextBlock.Margin" Value="1"></Setter>
+                    <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                    <Setter Property="TextBlock.HorizontalAlignment" Value="Center" />
+                    <Setter Property="TextBlock.FontSize" Value="18" />
+                    <Setter Property="TextBlock.Foreground" Value="White"/>
+
+                </Style>
+
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.ColumnSpan="22" Grid.RowSpan="17">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="img/bkg.png"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="22" Grid.RowSpan="1">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="img/righttop.png"/>
+                </Rectangle.Fill>
+
+            </Rectangle>
+
+            <!--Первая строка меню -->
+            <Label x:Name="lblName" Content="Admin" Style="{StaticResource HeaderText}" Width="180" Grid.ColumnSpan="6" Margin="20,10,10,20" Grid.RowSpan="2"/>
+            <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="6" Grid.RowSpan="4" Background="#C4210894">
+                <Button Focusable="False" x:Name="PhotomentryButton" Foreground="White" ClickMode="Press" 
+                         PreviewMouseDown="PhotomentryButton_PreviewMouseDown">
+
+
+                    <StackPanel>
+                        <Image Source="img/Nph.png" Height="58" />
+                        <TextBlock Text="Фотометрический" TextWrapping="Wrap" 
+                               FontWeight="Bold" HorizontalAlignment="Stretch"
+                               FontSize="18">
+                        </TextBlock>
+                    </StackPanel>
+                    <Button.Background>
+                        <ImageBrush ImageSource="img/Nphb.png"/>
+                    </Button.Background>
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="6" Grid.RowSpan="4" Background="#C4210894">
+                <Button Focusable="False" x:Name="MultiWavelengthButton" Foreground="White" ClickMode="Press"
+                        PreviewMouseDown="MultiWavelengthButton_PreviewMouseDown">
+                    <StackPanel>
+                        <Image Source="img/Nmulti.png" Height="58" />
+                        <TextBlock Text="Многоволновой" TextWrapping="Wrap" 
+                               FontWeight="Bold" HorizontalAlignment="Stretch"
+                               FontSize="18">
+                        </TextBlock>
+                    </StackPanel>
+
+                    <Button.Background>
+                        <ImageBrush ImageSource="img/Nmultib.png"/>
+                    </Button.Background>
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="3" Grid.RowSpan="4" Background="#C4210894">
+                <Button Focusable="False" x:Name="KineticsButton" Foreground="White" ClickMode="Press" PreviewMouseDown="KineticsButton_PreviewMouseDown">
+
+                    <StackPanel>
+                        <Image Source="img/ico_kin.png" Height="58" />
+                        <TextBlock Text="Кинетический (расширенный)" TextWrapping="Wrap" 
+                               FontWeight="Bold" HorizontalAlignment="Stretch"
+                               FontSize="18">
+                        </TextBlock>
+                    </StackPanel>
+                    <Button.Background>
+                        <ImageBrush ImageSource="img/Nkeniticsb.png"/>
+                    </Button.Background>
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="2" Grid.Column="17" Grid.ColumnSpan="3" Grid.RowSpan="4" Background="#C4210894">
+                <Button Focusable="False" x:Name="TimeScanButton" Background="#FF158D15" Foreground="White" ClickMode="Press" PreviewMouseDown="TimeScanButton_PreviewMouseDown">
+                    <StackPanel>
+                        <Image Source="img/Ntime.png" Height="58" />
+                        <TextBlock Text="Кинетический (основной)" TextWrapping="Wrap" 
+                               FontWeight="Bold" HorizontalAlignment="Stretch"
+                               FontSize="18">
+                        </TextBlock>
+                    </StackPanel>
+
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Grid>
+
+            <!--Вторая строка меню -->
+
+            <Grid Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="3" Grid.RowSpan="4" Background="#C4210894">
+                <Button Focusable="False" x:Name="QuantitationButton" Background="#FF158D15" Foreground="White" ClickMode="Press"
+                        PreviewMouseDown="QuantitationButton_PreviewMouseDown">
+                    <StackPanel>
+                        <Image Source="img/Nqua.png" Height="58" />
+                        <TextBlock Text="Количественный" TextWrapping="Wrap" 
+                               FontWeight="Bold" HorizontalAlignment="Stretch"
+                               FontSize="18">
+                        </TextBlock>
+                    </StackPanel>
+
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="7" Grid.Column="5" Grid.ColumnSpan="3" Grid.RowSpan="4" Background="#C4210894">
+                <Button Focusable="False" x:Name="DualComponentButton" Background="#FFE65072" Foreground="White"
+                        ClickMode="Press" PreviewMouseDown="DualComponentButton_PreviewMouseDown">
+                    <StackPanel>
+                        <Image Source="img/Nkenitics.png" Height="58" />
+                        <TextBlock Text="2-компонентный" TextWrapping="Wrap" 
+                               FontWeight="Bold" HorizontalAlignment="Stretch"
+                               FontSize="18">
+                        </TextBlock>
+                    </StackPanel>
+
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="7" Grid.Column="8" Grid.ColumnSpan="6" Grid.RowSpan="4" Background="#C4210894">
+                <Button Focusable="False" x:Name="DNAProteinButton" Foreground="White" PreviewMouseDown="DNAProteinButton_PreviewMouseDown" ClickMode="Press" >
+                    <StackPanel>
+                        <Image Source="img/Ndan.png" Height="58" />
+                        <TextBlock Text="ДНК/Протеин" TextWrapping="Wrap" 
+                               FontWeight="Bold" HorizontalAlignment="Stretch"
+                               FontSize="18">
+                        </TextBlock>
+                    </StackPanel>
+
+                    <Button.Background>
+                        <ImageBrush ImageSource="img/Ndnab.png"/>
+                    </Button.Background>
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="7" Grid.Column="14" Grid.ColumnSpan="6" Grid.RowSpan="4" Background="#C4210894">
+                <Button Focusable="False" x:Name="SpectrumButton" Foreground="White" ClickMode="Press" 
+                        PreviewMouseDown="SpectrumButton_PreviewMouseDown">
+                    <StackPanel>
+                        <Image Source="img/Nspec.png" Height="58" />
+                        <TextBlock Text="Сканирование спектра" TextWrapping="Wrap" 
+                               FontWeight="Bold" HorizontalAlignment="Stretch"
+                               FontSize="18">
+                        </TextBlock>
+                    </StackPanel>
+
+                    <Button.Background>
+                        <ImageBrush ImageSource="img/Nspecb.png"/>
+                    </Button.Background>
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Grid>
+
+            <!--Третья строка меню -->
+
+            <Grid Grid.Row="12" Grid.Column="2" Grid.ColumnSpan="3" Grid.RowSpan="4" Background="#C4210894">
+                <Button Focusable="False" x:Name="UserManagerButton" Foreground="White" ClickMode="Press" 
+                        PreviewMouseDown="UserManagerButton_PreviewMouseDown" IsEnabled="False">
+
+                    <StackPanel>
+                        <Image Source="img/Nglp.png" Height="58" />
+                        <TextBlock Text="Пользователи" TextWrapping="Wrap" 
+                               FontWeight="Bold" HorizontalAlignment="Stretch"
+                               FontSize="18">
+                        </TextBlock>
+                    </StackPanel>
+                    <Button.Background>
+                        <ImageBrush ImageSource="img/Nglpb.png"/>
+                    </Button.Background>
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="12" Grid.Column="5" Grid.ColumnSpan="3" Grid.RowSpan="4" Background="#C4210894">
+                <Button Focusable="False" x:Name="PerfomanceVerificationsButton" Background="#FF4048E4" Foreground="White" 
+                        ClickMode="Press" PreviewMouseDown="PerfomanceVerificationsButton_PreviewMouseDown">
+                    <StackPanel>
+                        <Image Source="img/Ngmp.png" Height="58" />
+                        <TextBlock Text="Проверка производительности" TextWrapping="Wrap" 
+                               FontWeight="Bold" HorizontalAlignment="Stretch"
+                               FontSize="18">
+                        </TextBlock>
+                    </StackPanel>
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="12" Grid.Column="8" Grid.ColumnSpan="3" Grid.RowSpan="4" Background="#C4210894">
+                <Button Focusable="False" x:Name="FileManagerButton" Foreground="White" ClickMode="Press">
+                    <StackPanel>
+                        <Image Source="img/Nfile.png" Height="58" />
+                        <TextBlock Text="Архив" TextWrapping="Wrap" 
+                               FontWeight="Bold" HorizontalAlignment="Stretch"
+                               FontSize="18">
+                        </TextBlock>
+                    </StackPanel>
+
+                    <Button.Background>
+                        <ImageBrush ImageSource="img/Nfileb.png"/>
+                    </Button.Background>
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="12" Grid.Column="11" Grid.ColumnSpan="3" Grid.RowSpan="4" Background="#C4210894">
+                <Button Focusable="False" x:Name="CustomMethodButton" Background="#FF158D15"
+                        ClickMode="Press">
+                    <Button.Foreground>
+                        <ImageBrush ImageSource="img/Nzdyffb.png"/>
+                    </Button.Foreground>
+                    <StackPanel>
+                        <Image Source="img/Nzdyff.png" Height="58" />
+                        <TextBlock Text="Настройки" TextWrapping="Wrap" 
+                               FontWeight="Bold" HorizontalAlignment="Stretch"
+                                   
+                               FontSize="18" Foreground="White">
+                        </TextBlock>
+                    </StackPanel>
+
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="12" Grid.Column="14" Grid.ColumnSpan="6" Grid.RowSpan="4" Background="#C4210894">
+                <Button Focusable="False" x:Name="SystemButton" Background="#FFE65072" Foreground="White" ClickMode="Press"
+                        PreviewMouseDown="SystemButton_PreviewMouseDown">
+                    <StackPanel>
+                        <Image Source="img/Nsystem.png" Height="58" />
+                        <TextBlock Text="Система" TextWrapping="Wrap" 
+                               FontWeight="Bold" HorizontalAlignment="Stretch"
+                               FontSize="18">
+                        </TextBlock>
+                    </StackPanel>
+
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Grid>
+
+            <Rectangle Grid.Column="0" Grid.Row="17" Grid.ColumnSpan="22" Grid.RowSpan="1">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="img/bottom.png"/>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <Grid Grid.Row="18" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" >
+
+
+                <Button Focusable="False" x:Name="OperationTask" Foreground="White" ClickMode="Press" PreviewMouseDown="OperationTask_PreviewMouseDown" BorderBrush="{x:Null}" Margin="8,0,-8,7">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+                            <Setter Property="TextBlock.HorizontalAlignment" Value="Stretch" />
+                            <Setter Property="TextBlock.FontSize" Value="18" />
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+                            <Setter Property="HorizontalAlignment" Value="Stretch" />
+                        </Style>
+                    </Button.Resources>
+                    <Button.Background>
+                        <ImageBrush ImageSource="img/Mmenu.png" Stretch="None"/>
+                    </Button.Background>
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Grid>
+
+            <Separator Grid.Column="1" Grid.Row="17" Grid.RowSpan="1" Style="{StaticResource SeparatorLine}"/>
+            <Label x:Name="time_now" Grid.Column="16"  Grid.Row="16" Style="{StaticResource FontStyle}" VerticalAlignment="Center" Margin="4,27.5,0,0.5" Grid.ColumnSpan="2" Width="66" Height="30" Grid.RowSpan="2"/>
+            <Separator Grid.Column="18" Grid.Row="17" Grid.RowSpan="1" Style="{StaticResource SeparatorLine}" Margin="0,2"/>
+            <Label x:Name="date_now" Grid.Column="18"  Grid.Row="16" Grid.ColumnSpan="4" Style="{StaticResource FontStyle}" VerticalAlignment="Center" Margin="28,26,4,1" Width="108" Height="30" Grid.RowSpan="2"/>
+
+        </Grid>
+    </Border>
+</Window>
